@@ -9,12 +9,13 @@ Uppon some serious deliberation I have decided to update my todo app to use:
 I would love to add a wider variety of features to this app that includes:
 
 - [ ] Add tasks.
-- [ ] Re-order tasks.
 - [ ] Search for tasks.
 - [ ] Remove tasks.
 - [ ] Storage of tasks.
 
 I hope the end result will be worth while.
+
+## Additions and modifications
 
 ## Usage
 
