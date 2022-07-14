@@ -1,9 +1,8 @@
 import type { NextPage } from 'next';
+import Todos from '../components/Todos';
 
 const Home: NextPage = () => {
-  return (
-    <h1>new state</h1>
-  )
-}
+	return <Todos/>
+};
 
-export default Home
+export default Home;

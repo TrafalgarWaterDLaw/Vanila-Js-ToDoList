@@ -1,3 +1,5 @@
+import Todo from '../modals/todo';
+
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
@@ -81,21 +83,18 @@ const NewTodo = () => {
 				(date.toLocaleString('default', { month: 'long' }), 'task:')
 			} ${date.getFullYear().toString()}`;
 
-			const userData = {
-				id: Date.now(),
-				title: title,
-				task: task,
-				date: inputDate,
-				time: time,
-			};
+			// const userData: Todo = {
+			// 	text: task,
+			// 	id: Date.now().toString(),
+			// };
 
-			//todoCtx.addTodo(userData);
+			todoCtx.addTodo(task);
 		}
 
 	};
 
 	return (
-		<div>
+		<>
 			<Modal
 				aria-labelledby='transition-modal-title'
 				aria-describedby='transition-modal-description'
@@ -233,7 +232,7 @@ const NewTodo = () => {
 					</Card>
 				</Fade>
 			</Modal>
-		</div>
+		</>
 	);
 };
 

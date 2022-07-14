@@ -76,7 +76,12 @@ const mdTheme = createTheme({
 	},
 });
 
-function DashboardContent() {
+interface DashboardProps {
+	children?: React.ReactNode;
+ }
+
+
+const Dashboard: React.FC<DashboardProps> = ({children}) => {
 	const [open, setOpen] = React.useState(true);
 
 	const toggleDrawer = () => {
@@ -112,10 +117,10 @@ function DashboardContent() {
 							noWrap
 							sx={{ flexGrow: 1 }}
 						>
-							To-Doodle
+							To-Doodles
 						</Typography>
 						<IconButton color='inherit'>
-							<Badge badgeContent={4} color='secondary'>
+							<Badge badgeContent={1} color='secondary'>
 								<NotificationsIcon />
 							</Badge>
 						</IconButton>
@@ -154,12 +159,11 @@ function DashboardContent() {
 					}}
 				>
 					<Toolbar />
+					{children}
 				</Box>
 			</Box>
 		</ThemeProvider>
 	);
 }
 
-export default function Dashboard() {
-	return <DashboardContent />;
-}
+export default Dashboard

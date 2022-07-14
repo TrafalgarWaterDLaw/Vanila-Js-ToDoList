@@ -1,9 +1,13 @@
-import * as React from 'react';
+//  nextjs imports
+import Link from 'next/link';
+
+// MUI Imports
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
 
+// MUI Icons
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
@@ -13,13 +17,15 @@ import LabelImportantTwoToneIcon from '@mui/icons-material/LabelImportantTwoTone
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 
 export const mainListItems = (
-	<React.Fragment>
-		<ListItemButton>
-			<ListItemIcon>
-				<AddCircleIcon />
-			</ListItemIcon>
-			<ListItemText primary='Doodle' />
-		</ListItemButton>
+	<>
+		<Link href='./doodles'>
+			<ListItemButton>
+				<ListItemIcon>
+					<AddCircleIcon />
+				</ListItemIcon>
+				<ListItemText primary='Doodle' />
+			</ListItemButton>
+		</Link>
 
 		<ListItemButton>
 			<ListItemIcon>
@@ -40,31 +46,28 @@ export const mainListItems = (
 				<DeleteSweepRoundedIcon />
 			</ListItemIcon>
 			<ListItemText primary='Trash' />
-        </ListItemButton>
-        
-        <ListItemButton>
+		</ListItemButton>
+
+		<ListItemButton>
 			<ListItemIcon>
 				<LightModeIcon />
 			</ListItemIcon>
 			<ListItemText primary='Theme' />
 		</ListItemButton>
-
-	</React.Fragment>
+	</>
 );
 
 export const secondaryListItems = (
-	<React.Fragment>
-		
-        <ListSubheader component='div' inset>
+	<>
+		<ListSubheader component='div' inset>
 			App info
-        </ListSubheader>
-        
+		</ListSubheader>
+
 		<ListItemButton>
 			<ListItemIcon>
 				<AccountCircleRoundedIcon />
 			</ListItemIcon>
 			<ListItemText primary='About us' />
 		</ListItemButton>
-        
-	</React.Fragment>
+	</>
 );
