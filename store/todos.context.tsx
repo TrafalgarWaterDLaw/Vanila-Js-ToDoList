@@ -5,7 +5,9 @@ import Todo from '../modals/todo';
 
 interface TodoProp {
 	items: Todo[];
-	addTodo: (text: string) => void;
+	favorite: boolean;
+	addFavorite: (todo: Todo) => void;
+	addTodo: (text: string, day: string, time: string, title: string) => void;
 	removeTodo: (id: string) => void;
 }
 
@@ -16,14 +18,17 @@ interface Prop {
 export const TodosContxet = React.createContext<TodoProp>({
 	items: [],
 	addTodo: () => {},
-	removeTodo: () => {},
+	removeTodo: () => { },
+	favorite: false,
+	addFavorite: () => { }
 });
 
 const TodosContextProvider: React.FC<Prop> = (props) => {
 	const [todos, setTodos] = useState<Todo[]>([]);
+	const [favorite, setFavorite] = useState<boolean>(false);
 
-	const addTodoHandler = (text: string) => {
-		const newTodo = new Todo(text);
+	const addTodoHandler = (text: string, day: string, time: string, title: string) => {
+		const newTodo = new Todo(text, day, time, title);
 
 		setTodos((prevTodos) => {
 			return prevTodos.concat(newTodo);
@@ -36,10 +41,18 @@ const TodosContextProvider: React.FC<Prop> = (props) => {
 		});
 	};
 
+	const favoriteHandler = (todo: Todo) => { 
+		setFavorite((prevFavorite) => {
+			return !prevFavorite;
+		});
+	}
+
 	const contextValue: TodoProp = {
 		items: todos,
 		addTodo: addTodoHandler,
 		removeTodo: removeTodoHandler,
+		favorite: favorite,
+		addFavorite: favoriteHandler,
 	};
 
 	return (
