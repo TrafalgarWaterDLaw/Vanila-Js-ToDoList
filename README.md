@@ -9,13 +9,13 @@ Uppon some serious deliberation I have decided to update my todo app to use:
 
 I would love to add a wider variety of features to this app that includes:
 
-- [*] Add tasks.
-- [*] Remove tasks.
+- [x] Add tasks.
+- [x] Remove tasks.
 - [ ] Storage of tasks.
 - [ ] Dark theme. 😎
 - [ ] Light theme. 😊
-- [*] Mark tasks as done.
-- [*] Mark tasks as important.
+- [x] Mark tasks as done.
+- [x] Mark tasks as important.
 
 I hope the end result will be worth while.
 
