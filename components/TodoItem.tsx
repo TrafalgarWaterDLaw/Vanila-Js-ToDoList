@@ -15,28 +15,24 @@ import DeleteSweepRoundedIcon from '@mui/icons-material/DeleteSweepRounded';
 import LabelImportantTwoToneIcon from '@mui/icons-material/LabelImportantTwoTone';
 
 interface TodoItemProps {
-	// title: string;
-	// date: string;
+	title: string;
+	time: string;
+	date: string;
 	text: string;
 	onDelete: () => void;
-	// onFavorite: () => void;
+	onFavorite: () => void;
 	// onComplete: () => void;
 	// onImportant: () => void;
 }
 
 const TodoItem: React.FC<TodoItemProps> = ({
-	text,onDelete
+	title, time, date,text,onDelete, onFavorite,
 }) => {
 	return (
 		<Card sx={{ maxWidth: 345 }}>
 			<CardHeader
-				avatar={
-					<Avatar sx={{ bgcolor: orange[500] }} aria-label={'title'}>
-						Do
-					</Avatar>
-				}
-				title={'title'}
-				subheader={'date'}
+				title={title}
+				subheader={`Completed by: ${date}. Time:${time}`}
 			/>
 			<CardContent>
 				<Typography variant='body2' color='text.secondary'>
@@ -44,15 +40,12 @@ const TodoItem: React.FC<TodoItemProps> = ({
 				</Typography>
 			</CardContent>
 			<CardActions disableSpacing>
-				<IconButton aria-label='add to favorites'>
-					<FavoriteIcon />
-				</IconButton>
 
-				<IconButton aria-label='completed' >
+				<IconButton aria-label='completed' onClick={onDelete}>
 					<DoneOutlineIcon />
 				</IconButton>
 
-				<IconButton aria-label='important'>
+				<IconButton aria-label='important' onClick={onFavorite}>
 					<LabelImportantTwoToneIcon />
 				</IconButton>
 

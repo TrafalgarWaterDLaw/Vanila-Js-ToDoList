@@ -80,15 +80,12 @@ const NewTodo = () => {
 			handleClick();
 
 			const inputDate = `${date.getDate().toString()} ${
-				(date.toLocaleString('default', { month: 'long' }), 'task:')
-			} ${date.getFullYear().toString()}`;
+				(date.toLocaleString('default', { month: 'long' }))
+				} ${date.getFullYear().toString()}`;
+			
+			const inputTime = `${time.getHours().toString()}:${time.getMinutes().toString()}`;
 
-			// const userData: Todo = {
-			// 	text: task,
-			// 	id: Date.now().toString(),
-			// };
-
-			todoCtx.addTodo(task);
+			todoCtx.addTodo(task, inputDate, time.toString(), title);
 		}
 
 	};

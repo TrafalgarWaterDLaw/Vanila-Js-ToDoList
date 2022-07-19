@@ -12,7 +12,11 @@ const Todos: React.FC = () => {
 				<TodoItem
 					key={item.id}
 					onDelete={todoCtx.removeTodo.bind(null, item.id)}
+					date={item.todoDate}
+					title={item.title}
+					time={item.time}
 					text={item.text}
+					onFavorite={todoCtx.addFavorite.bind(null, item)}
 				/>
 			))}
 		</ul>
