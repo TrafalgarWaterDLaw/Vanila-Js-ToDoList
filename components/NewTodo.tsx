@@ -1,3 +1,5 @@
+import Todo from '../modals/todo';
+
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
@@ -78,24 +80,18 @@ const NewTodo = () => {
 			handleClick();
 
 			const inputDate = `${date.getDate().toString()} ${
-				(date.toLocaleString('default', { month: 'long' }), 'task:')
-			} ${date.getFullYear().toString()}`;
+				(date.toLocaleString('default', { month: 'long' }))
+				} ${date.getFullYear().toString()}`;
+			
+			const inputTime = `${time.getHours().toString()}:${time.getMinutes().toString()}`;
 
-			const userData = {
-				id: Date.now(),
-				title: title,
-				task: task,
-				date: inputDate,
-				time: time,
-			};
-
-			//todoCtx.addTodo(userData);
+			todoCtx.addTodo(task, inputDate, time.toString(), title);
 		}
 
 	};
 
 	return (
-		<div>
+		<>
 			<Modal
 				aria-labelledby='transition-modal-title'
 				aria-describedby='transition-modal-description'
@@ -233,7 +229,7 @@ const NewTodo = () => {
 					</Card>
 				</Fade>
 			</Modal>
-		</div>
+		</>
 	);
 };
 
