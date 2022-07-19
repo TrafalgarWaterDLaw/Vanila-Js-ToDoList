@@ -5,19 +5,17 @@ Uppon some serious deliberation I have decided to update my todo app to use:
 - [TypeScript](https://www.typescriptlang.org/).
 - [React](https://reactjs.org/).
 - [Next.js](https://nextjs.org/).
-- [React-spring](https://react-spring.io/).
 - [Material-ui](https://material-ui.com/).
 
 I would love to add a wider variety of features to this app that includes:
 
-- [ ] Add tasks.
-- [ ] Search for tasks.
-- [ ] Remove tasks.
+- [*] Add tasks.
+- [*] Remove tasks.
 - [ ] Storage of tasks.
 - [ ] Dark theme. 😎
 - [ ] Light theme. 😊
-- [ ] Mark tasks as done.
-- [ ] Mark tasks as important.
+- [*] Mark tasks as done.
+- [*] Mark tasks as important.
 
 I hope the end result will be worth while.
 
