@@ -1,3 +1,7 @@
+import { useContext } from 'react';
+import { TodosContxet } from '../../store/todos.context';
+
+//Material UI
 import * as React from 'react';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -9,10 +13,8 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import Badge from '@mui/material/Badge';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems, secondaryListItems } from './ListItems';
 
 const drawerWidth: number = 240;
@@ -68,7 +70,7 @@ const Drawer = styled(MuiDrawer, {
 const mdTheme = createTheme({
 	palette: {
 		primary: {
-			main: '#ff7900',
+			main: 'hsla(218, 100%, 50%, 0.996)',
 		},
 		secondary: {
 			main: '#fbfcff',
@@ -76,20 +78,33 @@ const mdTheme = createTheme({
 	},
 });
 
+const mdDarkTheme = createTheme({
+	palette: {
+		primary: {
+			main: '#fff',
+		},
+		secondary: {
+			main: '#000',
+		},
+	},
+})
+
 interface DashboardProps {
 	children?: React.ReactNode;
  }
 
 
 const Dashboard: React.FC<DashboardProps> = ({children}) => {
+	const todoCtx = useContext(TodosContxet)
 	const [open, setOpen] = React.useState(true);
+	const paletteTheme = todoCtx.lightTheme ? 'dark' : 'light'
 
 	const toggleDrawer = () => {
 		setOpen(!open);
 	};
 
 	return (
-		<ThemeProvider theme={mdTheme}>
+		<ThemeProvider theme={todoCtx.lightTheme ? mdDarkTheme : mdTheme}>
 			<Box sx={{ display: 'flex' }}>
 				<CssBaseline />
 				<AppBar position='absolute' open={open}>
@@ -114,6 +129,8 @@ const Dashboard: React.FC<DashboardProps> = ({children}) => {
 							component='h1'
 							variant='h6'
 							color='inherit'
+							fontWeight='800'
+							fontStyle='bold'
 							noWrap
 							sx={{ flexGrow: 1 }}
 						>
@@ -145,7 +162,7 @@ const Dashboard: React.FC<DashboardProps> = ({children}) => {
 					component='main'
 					sx={{
 						backgroundColor: (theme) =>
-							theme.palette.mode === 'light'
+							theme.palette.mode === paletteTheme
 								? theme.palette.grey[100]
 								: theme.palette.grey[900],
 						flexGrow: 1,

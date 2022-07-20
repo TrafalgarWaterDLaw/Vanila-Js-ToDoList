@@ -6,6 +6,8 @@ import Todo from '../modals/todo';
 interface TodoProp {
 	items: Todo[];
 	favorite: boolean;
+	lightTheme: boolean;
+	changeTheme: () => void;
 	addFavorite: (todo: Todo) => void;
 	addTodo: (text: string, day: string, time: string, title: string) => void;
 	removeTodo: (id: string) => void;
@@ -17,17 +19,25 @@ interface Prop {
 
 export const TodosContxet = React.createContext<TodoProp>({
 	items: [],
-	addTodo: () => {},
-	removeTodo: () => { },
 	favorite: false,
-	addFavorite: () => { }
+	lightTheme: true,
+	addTodo: () => {},
+	removeTodo: () => {},
+	addFavorite: () => {},
+	changeTheme: () => {},
 });
 
 const TodosContextProvider: React.FC<Prop> = (props) => {
 	const [todos, setTodos] = useState<Todo[]>([]);
 	const [favorite, setFavorite] = useState<boolean>(false);
+	const [theme, setTheme] = useState<boolean>(false);
 
-	const addTodoHandler = (text: string, day: string, time: string, title: string) => {
+	const addTodoHandler = (
+		text: string,
+		day: string,
+		time: string,
+		title: string,
+	) => {
 		const newTodo = new Todo(text, day, time, title);
 
 		setTodos((prevTodos) => {
@@ -41,11 +51,17 @@ const TodosContextProvider: React.FC<Prop> = (props) => {
 		});
 	};
 
-	const favoriteHandler = (todo: Todo) => { 
+	const favoriteHandler = (todo: Todo) => {
 		setFavorite((prevFavorite) => {
 			return !prevFavorite;
 		});
-	}
+	};
+
+	const themeHandler = () => {
+		setTheme((prevFavorite) => {
+			return !prevFavorite;
+		});
+	};
 
 	const contextValue: TodoProp = {
 		items: todos,
@@ -53,6 +69,8 @@ const TodosContextProvider: React.FC<Prop> = (props) => {
 		removeTodo: removeTodoHandler,
 		favorite: favorite,
 		addFavorite: favoriteHandler,
+		lightTheme: theme,
+		changeTheme: themeHandler
 	};
 
 	return (

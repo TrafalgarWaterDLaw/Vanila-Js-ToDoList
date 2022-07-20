@@ -1,5 +1,3 @@
-import Todo from '../modals/todo';
-
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
@@ -85,7 +83,7 @@ const NewTodo = () => {
 			
 			const inputTime = `${time.getHours().toString()}:${time.getMinutes().toString()}`;
 
-			todoCtx.addTodo(task, inputDate, time.toString(), title);
+			todoCtx.addTodo(task, inputDate, inputTime, title);
 		}
 
 	};

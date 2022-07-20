@@ -1,3 +1,6 @@
+import { useContext } from 'react';
+import { TodosContxet } from '../../store/todos.context';
+
 //  nextjs imports
 import Link from 'next/link';
 
@@ -12,10 +15,24 @@ import HomeIcon from '@mui/icons-material/Home';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-import DoneOutlineIcon from '@mui/icons-material/DoneOutline';
-import DeleteSweepRoundedIcon from '@mui/icons-material/DeleteSweepRounded';
 import LabelImportantTwoToneIcon from '@mui/icons-material/LabelImportantTwoTone';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
+
+
+const Theme: React.FC = () => {
+	const todoCtx = useContext(TodosContxet)
+	
+	return (
+		<ListItemButton onClick={() => {
+			todoCtx.changeTheme()
+		}}>
+			<ListItemIcon>
+				{todoCtx.lightTheme ? <DarkModeIcon /> : <LightModeIcon/>}
+			</ListItemIcon>
+			<ListItemText primary='Theme' />
+		</ListItemButton>
+	)
+}
 
 export const mainListItems = (
 	<>
@@ -46,12 +63,7 @@ export const mainListItems = (
 			</ListItemButton>
 		</Link>
 
-		<ListItemButton>
-			<ListItemIcon>
-				<LightModeIcon />
-			</ListItemIcon>
-			<ListItemText primary='Theme' />
-		</ListItemButton>
+		<Theme/>
 	</>
 );
 
