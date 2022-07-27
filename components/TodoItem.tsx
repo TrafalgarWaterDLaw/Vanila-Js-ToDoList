@@ -1,4 +1,5 @@
 import Card from '@mui/material/Card';
+import Grid from '@mui/material/Grid';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
@@ -16,39 +17,45 @@ interface TodoItemProps {
 	date: string;
 	text: string;
 	onDelete: () => void;
-	onFavorite: () => void;
+	onImportant: () => void;
 }
 
 const TodoItem: React.FC<TodoItemProps> = ({
-	title, time, date,text,onDelete, onFavorite,
+	title,
+	time,
+	date,
+	text,
+	onDelete,
+	onImportant,
 }) => {
 	return (
-		<Card sx={{ maxWidth: 345 }}>
-			<CardHeader
-				title={title}
-				subheader={`Completed by: ${date}. Time:${time}`}
-			/>
-			<CardContent>
-				<Typography variant='body2' color='text.secondary'>
-					{text}
-				</Typography>
-			</CardContent>
-			<CardActions disableSpacing>
+		<Grid item md={6} sm={12}>
+			<Card sx={{ width: 345 }}>
+				<CardHeader
+					title={title}
+					subheader={`Completed on: ${date}. Time:${time}`}
+				/>
+				<CardContent>
+					<Typography variant='body2' color='text.secondary'>
+						{text}
+					</Typography>
+				</CardContent>
+				<CardActions disableSpacing>
+					<IconButton aria-label='completed' onClick={onDelete}>
+						<DoneOutlineIcon />
+					</IconButton>
 
-				<IconButton aria-label='completed' onClick={onDelete}>
-					<DoneOutlineIcon />
-				</IconButton>
+					<IconButton aria-label='important' onClick={onImportant}>
+						<LabelImportantTwoToneIcon />
+					</IconButton>
 
-				<IconButton aria-label='important' onClick={onFavorite}>
-					<LabelImportantTwoToneIcon />
-				</IconButton>
-
-				
-				<IconButton aria-label='delete' onClick={onDelete}>
-					<DeleteSweepRoundedIcon />
-				</IconButton>
-			</CardActions>
-		</Card>
+					<IconButton aria-label='delete' onClick={onDelete}>
+						<DeleteSweepRoundedIcon />
+					</IconButton>
+				</CardActions>
+			</Card>
+		</Grid>
+		
 	);
 };
 

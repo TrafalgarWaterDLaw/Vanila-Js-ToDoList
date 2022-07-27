@@ -16,9 +16,10 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
 import { orange } from '@mui/material/colors';
 
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import DeleteSweepRoundedIcon from '@mui/icons-material/DeleteSweepRounded';
 import LabelImportantTwoToneIcon from '@mui/icons-material/LabelImportantTwoTone';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
@@ -39,6 +40,8 @@ const style = {
 	justifyContent: 'space-around',
 	boxShadow: 24,
 	p: 4,
+	["@media (max-height:800px)"]: { width: '50%', padding: "auto", margin: "auto" },
+	["@media (max-width:800px)"]: { width: '50%' },
 };
 
 const NewTodo = () => {
@@ -98,10 +101,11 @@ const NewTodo = () => {
 				closeAfterTransition
 				BackdropComponent={Backdrop}
 				BackdropProps={{
-					timeout: 500,
+					timeout: 350,
 				}}
 				sx={{
 					boxShadow: 1,
+					maxWidth: '600',
 					color: 'primary.main',
 					m: 1,
 					p: {
@@ -114,7 +118,7 @@ const NewTodo = () => {
 						component='form'
 						sx={{
 							...style,
-							'& > :not(style)': { m: 1, width: '25ch' },
+							'& > :not(style)': { m: 1, width: '2' },
 						}}
 						noValidate
 						autoComplete='off'
@@ -201,10 +205,7 @@ const NewTodo = () => {
 							</LocalizationProvider>
 						</CardContent>
 
-						<CardActions>
-							<IconButton aria-label='add to favorites' color='primary'>
-								<FavoriteIcon sx={{ fontSize: 30 }} />
-							</IconButton>
+						<CardActions >
 
 							<IconButton aria-label='important' color='primary'>
 								<LabelImportantTwoToneIcon sx={{ fontSize: 30 }} />

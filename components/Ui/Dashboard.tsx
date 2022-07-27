@@ -17,6 +17,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { mainListItems, secondaryListItems } from './ListItems';
 
+import Grid from '@mui/material/Grid';
+import { flexbox } from '@mui/system';
+
 const drawerWidth: number = 240;
 
 interface AppBarProps extends MuiAppBarProps {
@@ -87,17 +90,16 @@ const mdDarkTheme = createTheme({
 			main: '#000',
 		},
 	},
-})
+});
 
 interface DashboardProps {
 	children?: React.ReactNode;
- }
+}
 
-
-const Dashboard: React.FC<DashboardProps> = ({children}) => {
-	const todoCtx = useContext(TodosContxet)
+const Dashboard: React.FC<DashboardProps> = ({ children }) => {
+	const todoCtx = useContext(TodosContxet);
 	const [open, setOpen] = React.useState(true);
-	const paletteTheme = todoCtx.lightTheme ? 'dark' : 'light'
+	const paletteTheme = todoCtx.lightTheme ? 'dark' : 'light';
 
 	const toggleDrawer = () => {
 		setOpen(!open);
@@ -171,11 +173,13 @@ const Dashboard: React.FC<DashboardProps> = ({children}) => {
 					}}
 				>
 					<Toolbar />
-					{children}
+						<Grid sx={{ px: 4, py: 5}} container spacing={4}>
+							{children}
+						</Grid>
 				</Box>
 			</Box>
 		</ThemeProvider>
 	);
-}
+};
 
-export default Dashboard
+export default Dashboard;
