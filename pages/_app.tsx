@@ -6,9 +6,7 @@ import TodosContextProvider from '../store/todos.context';
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		<TodosContextProvider>
-			<Dashboard>
 				<Component {...pageProps} />
-			</Dashboard>
 		</TodosContextProvider>
 	);
 }
