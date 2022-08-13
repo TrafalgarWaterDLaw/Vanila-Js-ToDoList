@@ -2,6 +2,8 @@ import TodoItem from './TodoItem';
 import { useContext } from 'react';
 import { TodosContxet } from '../store/todos.context';
 
+//TODO: Fix this code
+
 const ImportantTodo = () => {
     const todoCtx = useContext(TodosContxet);
 
@@ -16,7 +18,7 @@ const ImportantTodo = () => {
                     title={item.title}
                     time={item.time}
                     text={item.text}
-                    onFavorite={todoCtx.addFavorite.bind(null, item)}
+                    onImportant={todoCtx.addFavorite.bind(null, item)}
                 />
             ))}
         </>
